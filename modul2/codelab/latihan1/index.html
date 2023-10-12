@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjumlahan Bilangan</title>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Penjumlahan Bilangan</h1>
+    <form>
+        <div style="margin-bottom: 20px;">
+            <label for="first-number">Bilangan Pertama: </label>
+            <input type="number" name="first_number" id="first-number">
+            <label for="second-number">Bilangan Kedua: </label>
+            <input type="number" name="second_number" id="second-number">
+        </div>
+        <div>
+            <button type="button"
+                onclick="alert(eval(`${first_number.value} + ${second_number.value}`))">Jumlahkan</button>
+            <button type="button" onclick="first_number.value = ''; second_number.value = ''">Ulang</button>
+        </div>
+    </form>
+
+</body>
+
+</html>
