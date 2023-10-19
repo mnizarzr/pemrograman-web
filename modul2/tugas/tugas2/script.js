@@ -1,8 +1,6 @@
-// Define an array to store tasks
 let tasks = [];
 let editingIndex = -1;
 
-// Function to render the task list
 function renderTaskList() {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
@@ -14,11 +12,11 @@ function renderTaskList() {
             <td>
                 <button class="btn btn-danger" onclick="deleteTask(${index})">Delete</button>
                 <button class="btn btn-primary" onclick="editTask(${index})" data-bs-toggle="modal" data-bs-target="#editTaskModal">Edit</button>
+            </td>
             `;
     });
 }
 
-// Function to add a new task
 function addTask() {
     const taskInput = document.getElementById("task");
     const taskText = taskInput.value.trim();
@@ -30,13 +28,11 @@ function addTask() {
     }
 }
 
-// Function to delete a task
 function deleteTask(index) {
     tasks.splice(index, 1);
     renderTaskList();
 }
 
-// Function to open the Edit Task modal
 function editTask(index) {
     editingIndex = index;
     const taskToEdit = tasks[index];
@@ -44,7 +40,6 @@ function editTask(index) {
     editTaskInput.value = taskToEdit.text;
 }
 
-// Function to save the edited task
 function saveTask() {
     const editTaskInput = document.getElementById("editTaskInput");
     const newText = editTaskInput.value.trim();
@@ -55,9 +50,7 @@ function saveTask() {
     }
 }
 
-// Attach event listeners
 document.getElementById("addTask").addEventListener("click", addTask);
 document.getElementById("saveTaskButton").addEventListener("click", saveTask);
 
-// Initial render
-renderTaskList();
+// renderTaskList();
