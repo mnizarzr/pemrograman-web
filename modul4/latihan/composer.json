@@ -1,0 +1,17 @@
+{
+    "name": "nizar/latihan",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/Controllers",
+            "Traits\\": "src/Traits"
+        }
+    },
+    "authors": [
+        {
+            "name": "Muhammad Nizar",
+            "email": "mnizarzr@gmail.com"
+        }
+    ],
+    "require": {}
+}
