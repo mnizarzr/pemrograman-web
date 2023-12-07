@@ -10,7 +10,17 @@ class Book extends Database
 
     public function findAll()
     {
-        $sql = "SELECT * FROM books";
+        $sql = <<<SQL
+            SELECT
+                b.id,
+                b.title,
+                a.`name` AS author_name,
+                g.`name` AS genre_name
+            FROM
+                books AS b
+                LEFT JOIN genres g ON b.genre_id = g.id
+                LEFT JOIN `authors` a ON b.author_id = a.id
+        SQL;
         $stmt = $this->connection->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;

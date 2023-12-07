@@ -10,7 +10,16 @@ class BookLoan extends Database
 
     public function findAll()
     {
-        $sql = "SELECT * FROM books_loans";
+        $sql = <<<SQL
+            SELECT
+                books_loans.*,
+                books.title AS book_title,
+                users.`name` AS user_name
+            FROM
+                books_loans
+                INNER JOIN users ON books_loans.user_id = users.id
+                INNER JOIN books ON books_loans.book_id = books.id
+        SQL;
         $stmt = $this->connection->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
