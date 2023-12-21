@@ -21,7 +21,10 @@ class GenreController extends Controller
      */
     public function store(StoreGenreRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        return response()->json(Genre::create($validated), 201);
+
     }
 
     /**

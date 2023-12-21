@@ -13,7 +13,7 @@ class BookLoanController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(BookLoan::all());
     }
 
     /**
@@ -29,7 +29,7 @@ class BookLoanController extends Controller
      */
     public function show(BookLoan $bookLoan)
     {
-        //
+        return response()->json($bookLoan->load('authors', 'genre'));
     }
 
     /**
@@ -37,7 +37,7 @@ class BookLoanController extends Controller
      */
     public function update(UpdateBookLoanRequest $request, BookLoan $bookLoan)
     {
-        //
+        return response()->json($bookLoan->update($request->all()));
     }
 
     /**
@@ -45,6 +45,6 @@ class BookLoanController extends Controller
      */
     public function destroy(BookLoan $bookLoan)
     {
-        //
+        return response()->json($bookLoan->delete());
     }
 }

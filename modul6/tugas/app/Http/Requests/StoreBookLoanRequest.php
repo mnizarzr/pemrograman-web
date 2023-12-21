@@ -11,7 +11,7 @@ class StoreBookLoanRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,9 +22,8 @@ class StoreBookLoanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'genre_id' => 'required|exists:genres,id',
-            'author_id' => 'required|exists:authors,id',
+            'book_id' => 'required|exists:books,id',
+            'return_date' => 'required|date',
         ];
     }
 }

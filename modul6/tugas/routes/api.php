@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookLoanController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +20,19 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/me', function(Request $request){
+        return $request->user();
+    });
+
     Route::post('/signout', [AuthController::class, 'signout']);
 
+    Route::apiResource('books', BookController::class);
+    Route::apiResource('authors', AuthorController::class);
+    Route::apiResource('genres', GenreController::class);
+    Route::apiResource('loans', BookLoanController::class);
 
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);
-Route::post('/signin', [AuthController::class, 'signin']);
+Route::post('/login', [AuthController::class, 'signin']);

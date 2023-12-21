@@ -21,7 +21,18 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $book = Book::create([
+            'title' => $validated['title'],
+            'genre_id' => $validated['genre_id'],
+        ]);
+
+        if (isset($validated['author_id'])) {
+            $book->authors()->attach($validated['author_id']);
+        }
+
+        return response()->json($book, 201);
     }
 
     /**
@@ -29,7 +40,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return response()->json($book->with(['authors', 'genres'])->get());
+        return response()->json($book->load('authors', 'genre'));
     }
 
     /**
